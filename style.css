@@ -55,11 +55,37 @@ button:hover {
     height: auto;
 }
 
+/* Sobre Container styles */
+.sobre-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sobre-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.sobre-container img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
 @media (max-width: 600px) {
     .intro {
         flex-direction: column;
     }
     .intro-text {
+        text-align: center;
+    }
+    .sobre-container {
+        flex-direction: column;
+    }
+    .sobre-text {
         text-align: center;
     }
 }
