@@ -35,3 +35,31 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.intro-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.intro img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    .intro {
+        flex-direction: column;
+    }
+    .intro-text {
+        text-align: center;
+    }
+}
