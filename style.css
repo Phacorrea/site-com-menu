@@ -114,3 +114,27 @@ button:hover {
     resize: vertical;
     min-height: 120px;
 }
+
+/* Form messages */
+.message {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.message.error {
+    background-color: #ffdddd;
+    color: #a94442;
+}
+
+.message.success {
+    background-color: #ddffdd;
+    color: #3c763d;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
