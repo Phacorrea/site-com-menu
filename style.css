@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f2f2f2;
@@ -15,6 +26,11 @@ button {
     font-family: 'Poppins', sans-serif;
 }
 
+h1 {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
 nav {
     background-color: #333;
     padding: 10px;
@@ -24,10 +40,12 @@ nav a {
     margin-right: 15px;
     text-decoration: none;
     color: #fff;
+    transition: color 0.3s;
 }
 
 nav a:hover {
     text-decoration: underline;
+    color: #1abc9c;
 }
 
 .container {
@@ -40,6 +58,7 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
