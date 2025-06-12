@@ -8,14 +8,40 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">Página Inicial</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="contato.html">Contato</a>
+        <a href="#inicio">Página Inicial</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
     </nav>
-    <div class="container">
+
+    <section id="inicio" class="container">
         <h1>Bem-vindo ao meu site!</h1>
         <p class="animado">Esta é a página inicial.</p>
-    </div>
+    </section>
+
+    <section id="sobre" class="container">
+        <h1>Sobre Mim</h1>
+        <p class="animado">Este site foi criado para compartilhar um pouco sobre mim. Sou um personagem fictício apaixonado por tecnologia e design.</p>
+        <div class="sobre-container animado">
+            <div class="sobre-text">
+                <h2 class="animado">Pedro Corrêa</h2>
+                <h3>Gestor de negócios apaixonado por inovação e tecnologia aplicada à saúde</h3>
+                <p class="animado">Pedro é um personagem fictício dedicado a transformar ideias em oportunidades que melhorem a vida das pessoas. Ele acredita que a tecnologia pode revolucionar o cuidado com a saúde e trabalha para conectar soluções inovadoras a quem mais precisa.</p>
+            </div>
+            <img src="https://via.placeholder.com/300" alt="Imagem ilustrativa de Pedro Corrêa">
+        </div>
+    </section>
+
+    <section id="contato" class="container">
+        <h1>Contato</h1>
+        <div id="form-message" class="message"></div>
+        <form class="contact-form" action="https://formspree.io/f/xdkzeqlg" method="POST">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="email" name="_replyto" placeholder="E-mail" required>
+            <textarea name="mensagem" placeholder="Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
     <footer>
         <p class="animado">Pedro Corrêa</p>
         <div class="social-icons">
@@ -24,6 +50,72 @@
             <a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.contact-form');
+            const button = form.querySelector('button');
+            const msgEl = document.getElementById('form-message');
+
+            function showMessage(text, type) {
+                msgEl.textContent = text;
+                msgEl.className = 'message ' + type;
+                msgEl.style.display = 'block';
+            }
+
+            function clearMessage() {
+                msgEl.textContent = '';
+                msgEl.className = 'message';
+                msgEl.style.display = 'none';
+            }
+
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                clearMessage();
+
+                const nome = form.querySelector('[name="nome"]').value.trim();
+                const email = form.querySelector('[name="_replyto"]').value.trim();
+                const mensagem = form.querySelector('[name="mensagem"]').value.trim();
+
+                if (!nome || !email || !mensagem) {
+                    showMessage('Por favor, preencha todos os campos.', 'error');
+                    return;
+                }
+
+                if (!validateEmail(email)) {
+                    showMessage('E-mail inválido.', 'error');
+                    return;
+                }
+
+                button.disabled = true;
+                button.textContent = 'Enviando...';
+
+                const data = new FormData(form);
+                fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                }).then(function (response) {
+                    if (response.ok) {
+                        form.reset();
+                        showMessage('Mensagem enviada com sucesso!', 'success');
+                    } else {
+                        showMessage('Não foi possível enviar sua mensagem.', 'error');
+                    }
+                }).catch(function () {
+                    showMessage('Erro de rede. Tente novamente.', 'error');
+                }).finally(function () {
+                    button.disabled = false;
+                    button.textContent = 'Enviar';
+                });
+            });
+        });
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             function revelarAoRolar() {
