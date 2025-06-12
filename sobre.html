@@ -14,23 +14,37 @@
     </nav>
     <div class="container">
         <h1>Sobre Mim</h1>
-        <p>Este site foi criado para compartilhar um pouco sobre mim. Sou um personagem fictício apaixonado por tecnologia e design.</p>
-        <div class="sobre-container">
+        <p class="animado">Este site foi criado para compartilhar um pouco sobre mim. Sou um personagem fictício apaixonado por tecnologia e design.</p>
+        <div class="sobre-container animado">
             <div class="sobre-text">
-                <h2>Pedro Corrêa</h2>
+                <h2 class="animado">Pedro Corrêa</h2>
                 <h3>Gestor de negócios apaixonado por inovação e tecnologia aplicada à saúde</h3>
-                <p>Pedro é um personagem fictício dedicado a transformar ideias em oportunidades que melhorem a vida das pessoas. Ele acredita que a tecnologia pode revolucionar o cuidado com a saúde e trabalha para conectar soluções inovadoras a quem mais precisa.</p>
+                <p class="animado">Pedro é um personagem fictício dedicado a transformar ideias em oportunidades que melhorem a vida das pessoas. Ele acredita que a tecnologia pode revolucionar o cuidado com a saúde e trabalha para conectar soluções inovadoras a quem mais precisa.</p>
             </div>
             <img src="https://via.placeholder.com/300" alt="Imagem ilustrativa de Pedro Corrêa">
         </div>
     </div>
     <footer>
-        <p>Pedro Corrêa</p>
+        <p class="animado">Pedro Corrêa</p>
         <div class="social-icons">
             <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function revelarAoRolar() {
+                document.querySelectorAll('.animado').forEach(function (el) {
+                    const pos = el.getBoundingClientRect();
+                    if (pos.top < window.innerHeight - 50) {
+                        el.classList.add('aparecer');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revelarAoRolar);
+            revelarAoRolar();
+        });
+    </script>
 </body>
 </html>

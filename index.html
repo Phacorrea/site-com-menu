@@ -14,15 +14,29 @@
     </nav>
     <div class="container">
         <h1>Bem-vindo ao meu site!</h1>
-        <p>Esta é a página inicial.</p>
+        <p class="animado">Esta é a página inicial.</p>
     </div>
     <footer>
-        <p>Pedro Corrêa</p>
+        <p class="animado">Pedro Corrêa</p>
         <div class="social-icons">
             <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function revelarAoRolar() {
+                document.querySelectorAll('.animado').forEach(function (el) {
+                    const pos = el.getBoundingClientRect();
+                    if (pos.top < window.innerHeight - 50) {
+                        el.classList.add('aparecer');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revelarAoRolar);
+            revelarAoRolar();
+        });
+    </script>
 </body>
 </html>
