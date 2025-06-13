@@ -253,11 +253,17 @@ footer a:hover {
     display: flex;
 }
 
-.modal img {
+.modal-content {
     max-width: 90%;
     max-height: 90%;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.modal-content.visivel {
+    opacity: 1;
 }
 
 #modal-caption {
