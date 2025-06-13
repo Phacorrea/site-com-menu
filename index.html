@@ -52,7 +52,7 @@
 
     <div id="image-modal" class="modal">
         <span class="modal-close">&times;</span>
-        <img id="modal-img" src="" alt="Imagem em destaque">
+        <img id="modal-img" class="modal-content" src="" alt="Imagem em destaque">
         <div id="modal-caption"></div>
     </div>
 
@@ -154,14 +154,19 @@
 
             document.querySelectorAll('.gallery-item img').forEach(function (img) {
                 img.addEventListener('click', function () {
+                    modalImg.classList.remove('visivel');
                     modalImg.src = this.src;
                     captionEl.textContent = this.getAttribute('data-caption');
                     modal.classList.add('open');
+                    setTimeout(function () {
+                        modalImg.classList.add('visivel');
+                    }, 50);
                 });
             });
 
             function closeModal() {
                 modal.classList.remove('open');
+                modalImg.classList.remove('visivel');
                 modalImg.src = '';
                 captionEl.textContent = '';
             }
