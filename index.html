@@ -50,6 +50,11 @@
         <div class="gallery-item"><img src="https://picsum.photos/seed/6/600/400" alt="Imagem aleatoria 6"></div>
     </div>
 
+    <div id="image-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="modal-img" src="" alt="Imagem em destaque">
+    </div>
+
     <footer>
         <p class="animado">Pedro Corrêa</p>
         <div class="social-icons">
@@ -136,6 +141,33 @@
             }
             window.addEventListener('scroll', revelarAoRolar);
             revelarAoRolar();
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById('image-modal');
+            var modalImg = document.getElementById('modal-img');
+            var closeBtn = document.querySelector('.modal-close');
+
+            document.querySelectorAll('.gallery-item img').forEach(function (img) {
+                img.addEventListener('click', function () {
+                    modalImg.src = this.src;
+                    modal.classList.add('open');
+                });
+            });
+
+            function closeModal() {
+                modal.classList.remove('open');
+                modalImg.src = '';
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>
