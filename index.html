@@ -42,17 +42,18 @@
         </form>
     </section>
     <div class="gallery">
-        <div class="gallery-item"><img src="https://picsum.photos/seed/1/600/400" alt="Imagem aleatoria 1"></div>
-        <div class="gallery-item"><img src="https://picsum.photos/seed/2/600/400" alt="Imagem aleatoria 2"></div>
-        <div class="gallery-item"><img src="https://picsum.photos/seed/3/600/400" alt="Imagem aleatoria 3"></div>
-        <div class="gallery-item"><img src="https://picsum.photos/seed/4/600/400" alt="Imagem aleatoria 4"></div>
-        <div class="gallery-item"><img src="https://picsum.photos/seed/5/600/400" alt="Imagem aleatoria 5"></div>
-        <div class="gallery-item"><img src="https://picsum.photos/seed/6/600/400" alt="Imagem aleatoria 6"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/1/600/400" alt="Imagem aleatoria 1" data-caption="Imagem aleatoria 1"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/2/600/400" alt="Imagem aleatoria 2" data-caption="Imagem aleatoria 2"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/3/600/400" alt="Imagem aleatoria 3" data-caption="Imagem aleatoria 3"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/4/600/400" alt="Imagem aleatoria 4" data-caption="Imagem aleatoria 4"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/5/600/400" alt="Imagem aleatoria 5" data-caption="Imagem aleatoria 5"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/6/600/400" alt="Imagem aleatoria 6" data-caption="Imagem aleatoria 6"></div>
     </div>
 
     <div id="image-modal" class="modal">
         <span class="modal-close">&times;</span>
         <img id="modal-img" src="" alt="Imagem em destaque">
+        <div id="modal-caption"></div>
     </div>
 
     <footer>
@@ -148,11 +149,13 @@
         document.addEventListener('DOMContentLoaded', function () {
             var modal = document.getElementById('image-modal');
             var modalImg = document.getElementById('modal-img');
+            var captionEl = document.getElementById('modal-caption');
             var closeBtn = document.querySelector('.modal-close');
 
             document.querySelectorAll('.gallery-item img').forEach(function (img) {
                 img.addEventListener('click', function () {
                     modalImg.src = this.src;
+                    captionEl.textContent = this.getAttribute('data-caption');
                     modal.classList.add('open');
                 });
             });
@@ -160,6 +163,7 @@
             function closeModal() {
                 modal.classList.remove('open');
                 modalImg.src = '';
+                captionEl.textContent = '';
             }
 
             closeBtn.addEventListener('click', closeModal);
