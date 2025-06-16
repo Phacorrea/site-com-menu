@@ -9,9 +9,12 @@
 </head>
 <body>
     <nav>
-        <a href="#inicio">Página Inicial</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
+        <button class="menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        <div class="nav-links">
+            <a href="#inicio">Página Inicial</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </div>
     </nav>
 
     <section id="inicio" class="container">
@@ -68,6 +71,7 @@
 
     <script src="form.js"></script>
     <script src="scroll.js"></script>
+    <script src="menu.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
