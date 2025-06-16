@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <button class="menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
-        <div class="nav-links">
-            <a href="index.html">Página Inicial</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="contato.html">Contato</a>
-        </div>
-    </nav>
+    <div id="menu-container"></div>
     <div class="container">
         <h1>Sobre Mim</h1>
         <p class="animado">Este site foi criado para compartilhar um pouco sobre mim. Sou um personagem fictício apaixonado por tecnologia e design.</p>
@@ -28,15 +21,21 @@
             <img src="https://via.placeholder.com/300" alt="Imagem ilustrativa de Pedro Corrêa">
         </div>
     </div>
-    <footer>
-        <p class="animado">Pedro Corrêa</p>
-        <div class="social-icons">
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
     <script src="scroll.js"></script>
     <script src="menu.js"></script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    Promise.all([
+        fetch("menu.html").then(function(r){ return r.text(); }),
+        fetch("footer.html").then(function(r){ return r.text(); })
+    ]).then(function(results){
+        document.getElementById("menu-container").innerHTML = results[0];
+        document.getElementById("footer-container").innerHTML = results[1];
+        if (typeof initMenu === "function") { initMenu(); }
+    });
+});
+    </script>
 </body>
 </html>
