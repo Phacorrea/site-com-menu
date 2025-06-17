@@ -303,6 +303,22 @@ footer a:hover {
     font-weight: bold;
     cursor: pointer;
 }
+.modal-prev, .modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s;
+}
+.modal-prev { left: 20px; }
+.modal-next { right: 20px; }
+.modal-prev:hover, .modal-next:hover { color: #1abc9c; }
+
 
 @media (max-width: 768px) {
     nav {
